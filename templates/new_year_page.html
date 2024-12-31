@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WELCOME 😁</title>
     <style>
+        /* General Styles */
         body {
             font-family: Gabriola;
-            background-color:rgb(22, 181, 187);
+            background-color: rgb(22, 181, 187);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 150vh;
             margin: 0;
         }
+
+        /* Container Styles */
         .container {
             background-color: white;
             padding: 30px;
@@ -27,11 +30,14 @@
             font-family: Gabriola;
             height: 150vh;
         }
+
+        /* Heading Styles */
         h1 {
             color: #333;
             margin-bottom: 10px;
-
         }
+
+        /* Input Styles */
         input {
             width: 100%;
             padding: 4px;
@@ -40,6 +46,8 @@
             border-radius: 5px;
             font-family: gabriola;
         }
+
+        /* Button Styles */
         button {
             background-color: #28a745;
             color: white;
@@ -52,16 +60,64 @@
             display: flex;
             font-family: gabriola;
         }
+
         button:hover {
             background-color: black;
         }
-        #result {
-            margin-top: 20px;
-        }
+
+        /* Paragraph Styles */
         p {
             margin-bottom: .5px;
         }
-        
+
+        /* Dropdown Alignment */
+        .dropdown-group {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between label and dropdown */
+            margin-bottom: 10px;
+        }
+
+        .dropdown-group label {
+            flex: 1; /* Allow label to take up available space */
+            text-align: left;
+        }
+
+        .dropdown-group select {
+            flex: 2; /* Allow dropdown to take up more space */
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: gabriola;
+        }
+
+        @media (max-width: 480px) {
+            .dropdown-group {
+                display: flex;
+                align-items: center;
+                gap: 10px; /* Space between label and dropdown */
+                margin-bottom: 10px;
+            }
+
+            .dropdown-group label {
+                flex: 1; /* Allow label to take up available space */
+                text-align: left;
+            }
+
+            .dropdown-group select {
+                flex: 2; /* Allow dropdown to take up more space */
+                padding: 4px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-family: gabriola;
+            }
+        }
+
+        /* Reason Input Field */
+        #reasonInput {
+            display: none;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -83,9 +139,9 @@
 
             
 
-            <div style="margin-bottom: 10px;">
+           <div class="dropdown-group">
                 <label for="song">Song Genre🎶</label>
-                <select name="song" id="song" required style="margin-left: 24px;">
+                <select name="song" id="song" required >
                     <option value="" disabled selected>Song Genre🎶</option> <!-- Placeholder option -->
                     <option value="bongo">Bongo</option>
                     <option value="reggae">Reggae</option>
@@ -105,18 +161,18 @@
             </div>
             
 
-            <div style="margin-bottom: 10px;">
+            <div class="dropdown-group">
                 <label for="gender">Gender 👭</label>
-                <select name="gender" id="gender" required style="margin-left: 85px;">
+                <select name="gender" id="gender" required >
                     <option value="" disabled selected>Gender</option> <!-- Placeholder option -->
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
             </div>
 
-            <div style="margin-bottom: 10px;">
+            <div class="dropdown-group">
                 <label for="mood">Mood 😉</label>
-                <select name="mood" id="mood" required style="margin-left: 61px;">
+                <select name="mood" id="mood" required >
                     <option value="" disabled selected>Mood</option> <!-- Placeholder option -->
                     <option value="happy">Happy 😀</option>
                     <option value="sad">Sad 😔</option>
@@ -127,27 +183,27 @@
                 </select>
             </div>
 
-            <div style="margin-bottom: 10px;">
+            <div class="dropdown-group">
                 <label for="knowledge">Do you know SVJ? </label>
-                <select name="knowledge" id="knowledge" required style="margin-left: 54px;">
+                <select name="knowledge" id="knowledge" required >
                     <option value="" disabled selected>Pick one</option> <!-- Placeholder option -->
                     <option value="yes">Yes 😉</option>
                     <option value="no">No 😔</option>
                 </select>
             </div>
 
-            <div style="margin-bottom: 10px;">
+            <div class="dropdown-group">
                 <label for="meeting">Have you ever met him? </label>
-                <select name="meeting" id="meeting" required style="margin-left: 28px;">
+                <select name="meeting" id="meeting" required >
                     <option value="" disabled selected>Pick one</option> <!-- Placeholder option -->
                     <option value="yes">Yes 😉</option>
                     <option value="no">No 😔</option>
                 </select>
             </div>
 
-            <div style="margin-bottom: 10px;">
+            <div class="dropdown-group">
                 <label for="beef">Are you mad at him? </label>
-                <select name="beef" id="beef" required style="margin-left: 42px;" onchange="toggleReasonInput()">
+                <select name="beef" id="beef" required onchange="toggleReasonInput()">
                     <option value="" disabled selected>Pick one</option> <!-- Placeholder option -->
                     <option value="yes">Yes 😔</option>
                     <option value="no">No 😀</option>
@@ -172,12 +228,12 @@
                 }
             </script>
 
-            <div style="margin-bottom: 10px;">
+            <div class="dropdown-group">
                 <label for="opinion">How was 2024? </label>
-                <select name="opinion" id="opinion" required style="margin-left: 65px;" onchange="toggleReasonInput()">
+                <select name="opinion" id="opinion" required onchange="toggleReasonInput()">
                     <option value="" disabled selected>Pick one</option> <!-- Placeholder option -->
-                    <option value="good">Good 😀</option>
-                    <option value="bad">Bad 😔</option>
+                    <option value="good">Good 😔</option>
+                    <option value="bad">Bad 😀</option>
                 </select>
             </div>
 
@@ -186,9 +242,7 @@
 
             <label for="isbad">What was the worst thing of 2024? </label><br>
             <input type="text" name="isbad" placeholder="isbad" optional />
-
-
-            
+          
 
             <button type="submit">Tuende nalo 😁</button>
         </form>
