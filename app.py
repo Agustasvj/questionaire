@@ -51,7 +51,7 @@ def questionnaire():
         location = f"Latitude: {latitude}, Longitude: {longitude}"
         
         
-        print(f"Received data: Name 🙂: {name}, \nBirthday 🎆: {birthday}, \nPhonenumber ☎: {phonenumber}, \nLocation 🌍 🌎 🌏: {timezone}, \nSong Genre🎶: {song_genre} \nGender 👭: {gender}, \nMood 😉: {mood}, \nDo you know svj: {knowledge}, \nHave you ever met him: {meeting}, \nAre you mad at him: {beef}, \nPlease provide a reason: \n{reason}, How was 2024?: {opinion}, What was the best thing of 2024?: \n{isgood}, What was the worst thing of 2024?: \n{isbad}, \nlocation : {location}]")  # Debugging line
+        print(f"Received data: Name 🙂: {name}, \nBirthday 🎆: {birthday}, \nPhonenumber ☎: {phonenumber}, \nLocation 🌍 🌎 🌏: {timezone}, \nSong Genre🎶: {song_genre} \nGender 👭: {gender}, \nMood 😉: {mood}, \nDo you know svj: {knowledge}, \nHave you ever met him: {meeting}, \nAre you mad at him: {beef}, \nPlease provide a reason: \n{reason}, How was 2024?: {opinion}, What was the best thing of 2024?: \n{isgood}, What was the worst thing of 2024?: \n{isbad}]")  # Debugging line
         
         # Send data to Telegram
         send_to_telegram(name, birthday, phonenumber, timezone, location, mood, gender, knowledge, meeting, beef, reason, opinion, isgood, isbad, song_genre)
