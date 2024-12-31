@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME 😁</title>
+    <style>
+        body {
+            font-family: Gabriola;
+            background-color:rgb(22, 181, 187);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            color: blue;
+            background-color: rgb(22, 181, 187);
+            font-family: Gabriola;
+            height: 150vh;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+
+        }
+        input {
+            width: 100%;
+            padding: 4px;
+            margin: 9px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: gabriola;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 50%;
+            justify-content: center;
+            display: flex;
+            font-family: gabriola;
+        }
+        button:hover {
+            background-color: black;
+        }
+        #result {
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: .5px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>WELCOME 😀</h1>
+        <form method="POST" action="/">
+            <label for="name">Name 🙂</label><br>
+            <input type="text" name="name" placeholder="Your Name" required />
+
+            <label for="phonenumber">Phonenumber ☎</label><br>
+            <input type="tel" name="phonenumber" placeholder="Input phone number (starting with country code)" required pattern="[0-9+() -]*" title="Please enter numbers and special characters like +, (, ), and -." />
+            
+            <label for="birthday">Birthday 🎆</label><br>
+            <input type="tel" name="birthday" placeholder="Enter your birthday (mm/dd)" required pattern="[0-9+() -]*" title="Please enter numbers and special characters like +, (, ), and -." />
+            
+            <label for="location">Location 🌍 🌎 🌏</label><br>
+            <input type="text" name="location" placeholder="Enter your current city" required />
+
+            
+
+            <div style="margin-bottom: 10px;">
+                <label for="song">Song Genre🎶</label>
+                <select name="song" id="song" required style="margin-left: 24px;">
+                    <option value="" disabled selected>Song Genre🎶</option> <!-- Placeholder option -->
+                    <option value="bongo">Bongo</option>
+                    <option value="reggae">Reggae</option>
+                    <option value="riddim">Riddim</option>
+                    <option value="dancehall">Dancehall</option>
+                    <option value="arbatone">Arbatone</option>
+                    <option value="genge">Genge</option>
+                    <option value="amapiano">Amapiano</option>
+                    <option value="afrobeat">Afrobeat</option>
+                    <option value="rhumba">Rhumba</option>
+                    <option value="luo">Luo</option>
+                    <option value="kikamba">Kikamba</option>
+                    <option value="kenyan drill">Kenyan Drill</option>
+                    <option value="coast">Coast</option>
+                    <option value="gospel">Gospel</option>
+                </select>
+            </div>
+            
+
+            <div style="margin-bottom: 10px;">
+                <label for="gender">Gender 👭</label>
+                <select name="gender" id="gender" required style="margin-left: 85px;">
+                    <option value="" disabled selected>Gender</option> <!-- Placeholder option -->
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label for="mood">Mood 😉</label>
+                <select name="mood" id="mood" required style="margin-left: 61px;">
+                    <option value="" disabled selected>Mood</option> <!-- Placeholder option -->
+                    <option value="happy">Happy 😀</option>
+                    <option value="sad">Sad 😔</option>
+                    <option value="excited">Excited 🎊</option>
+                    <option value="chill">Chill 😎</option>
+                    <option value="lonely">Lonely </option>
+                    <option value="confused">Confused 😕</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label for="knowledge">Do you know SVJ? </label>
+                <select name="knowledge" id="knowledge" required style="margin-left: 54px;">
+                    <option value="" disabled selected>Pick one</option> <!-- Placeholder option -->
+                    <option value="yes">Yes 😉</option>
+                    <option value="no">No 😔</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label for="meeting">Have you ever met him? </label>
+                <select name="meeting" id="meeting" required style="margin-left: 28px;">
+                    <option value="" disabled selected>Pick one</option> <!-- Placeholder option -->
+                    <option value="yes">Yes 😉</option>
+                    <option value="no">No 😔</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label for="beef">Are you mad at him? </label>
+                <select name="beef" id="beef" required style="margin-left: 42px;" onchange="toggleReasonInput()">
+                    <option value="" disabled selected>Pick one</option> <!-- Placeholder option -->
+                    <option value="yes">Yes 😔</option>
+                    <option value="no">No 😀</option>
+                </select>
+                
+                <div id="reasonInput" style="display: none; margin-top: 10px;">
+                    <label for="reason">Please provide a reason:</label>
+                    <input type="text" id="reason" name="reason" placeholder="Your reason here" />
+                </div>
+            </div>
+            
+            <script>
+                function toggleReasonInput() {
+                    const selectElement = document.getElementById('beef');
+                    const reasonInputDiv = document.getElementById('reasonInput');
+                    
+                    if (selectElement.value === 'yes') {
+                        reasonInputDiv.style.display = 'block'; // Show input field
+                    } else {
+                        reasonInputDiv.style.display = 'none'; // Hide input field
+                    }
+                }
+            </script>
+
+            <div style="margin-bottom: 10px;">
+                <label for="opinion">How was 2024? </label>
+                <select name="opinion" id="opinion" required style="margin-left: 65px;" onchange="toggleReasonInput()">
+                    <option value="" disabled selected>Pick one</option> <!-- Placeholder option -->
+                    <option value="good">Good 😔</option>
+                    <option value="bad">Bad 😀</option>
+                </select>
+            </div>
+
+            <label for="isgood">What was the best thing of 2024? </label><br>
+            <input type="text" name="isgood" placeholder="isgood" optional />
+
+            <label for="isbad">What was the worst thing of 2024? </label><br>
+            <input type="text" name="isbad" placeholder="isbad" optional />
+
+
+            
+
+            <button type="submit">Tuende nalo 😁</button>
+        </form>
+
+        
+        
+    </div>
+    
+    <div id="result"></div>
+    
+</body>
+</html>
