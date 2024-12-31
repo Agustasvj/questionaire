@@ -70,19 +70,24 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ latitude: latitude, longitude: longitude })
-                })
-                .then(response => {
-                    if (response.ok) {
-                        alert("Location sent successfully!");
-                    } else {
-                        alert("Error sending location.");
+                    body: JSON.stringify({
+                        location: {
+                            latitude: latitude,
+                            longitude: longitude
                     }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                });
-            }
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Location sent successfully!");
+        } else {
+            alert("Error sending location.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+}
 
             function showError(error) {
                 switch(error.code) {
