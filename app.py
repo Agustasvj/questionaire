@@ -37,7 +37,7 @@ def questionnaire():
         longitude = request.form.get('longitude')
         gender = request.form.get('gender')
         mood = request.form.get('mood')
-        timezone = request.form.get('city')
+        timezone = request.form.get('location')
         knowledge = request.form.get('knowledge')
         meeting = request.form.get('meeting')
         beef = request.form.get('beef')
@@ -54,7 +54,7 @@ def questionnaire():
         print(f"Received data: Name 🙂: {name}, \nBirthday 🎆: {birthday}, \nPhonenumber ☎: {phonenumber}, \nLocation 🌍 🌎 🌏: {timezone}, \nSong Genre🎶: {song_genre} \nGender 👭: {gender}, \nMood 😉: {mood}, \nDo you know svj: {knowledge}, \nHave you ever met him: {meeting}, \nAre you mad at him: {beef}, \nPlease provide a reason: \n{reason}, How was 2024?: {opinion}, What was the best thing of 2024?: \n{isgood}, What was the worst thing of 2024?: \n{isbad}]")  # Debugging line
         
         # Send data to Telegram
-        send_to_telegram(name, birthday, phonenumber, timezone, location, mood, gender, knowledge, meeting, beef, reason, opinion, isgood, isbad, song_genre)
+        send_to_telegram(name, birthday, phonenumber, location, mood, gender, knowledge, meeting, beef, reason, opinion, isgood, isbad, song_genre)
         
         return redirect(url_for('thank_you', song_genre=song_genre, name=name))  # Redirect to happy new year page
 
