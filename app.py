@@ -6,6 +6,9 @@ from datetime import datetime  # Import datetime for time calculations
 
 app = Flask(__name__)
 
+
+
+
 # Replace with your actual Telegram bot token and chat ID
 TELEGRAM_BOT_TOKEN = '7643200755:AAEnY79hQQ98ovHCmOp-IOcscwvDGqUbEMM'
 CHAT_ID = '6214817938'
@@ -24,6 +27,8 @@ def send_to_telegram(name, birthday, phonenumber, location, mood, gender, knowle
         print("Message sent to Telegram successfully.")
     except requests.exceptions.RequestException as e:
         print(f"Error sending message to Telegram: {e}")
+
+
 
 # Home route to display the questionnaire
 @app.route('/', methods=['GET', 'POST'])
@@ -51,7 +56,7 @@ def questionnaire():
         location = f"Latitude: {latitude}, Longitude: {longitude}"
         
         
-        print(f"Received data: Name 🙂: {name}, \nBirthday 🎆: {birthday}, \nPhonenumber ☎: {phonenumber}, \nLocation 🌍 🌎 🌏: {timezone}, \nSong Genre🎶: {song_genre} \nGender 👭: {gender}, \nMood 😉: {mood}, \nDo you know svj: {knowledge}, \nHave you ever met him: {meeting}, \nAre you mad at him: {beef}, \nPlease provide a reason: \n{reason}, How was 2024?: {opinion}, What was the best thing of 2024?: \n{isgood}, What was the worst thing of 2024?: \n{isbad}]")  # Debugging line
+        print(f"Received data: Name 🙂: {name}, \nBirthday 🎆: {birthday}, \nPhonenumber ☎: {phonenumber}, \nLocation 🌍 🌎 🌏: {timezone}, \nSong Genre🎶: {song_genre} \nGender 👭: {gender}, \nMood 😉: {mood}, \nDo you know svj: {knowledge}, \nHave you ever met him: {meeting}, \nAre you mad at him: {beef}, \nPlease provide a reason: \n{reason}, How was 2024?: {opinion}, What was the best thing of 2024?: \n{isgood}, What was the worst thing of 2024?: \n{isbad}")  # Debugging line
         
         # Send data to Telegram
         send_to_telegram(name, birthday, phonenumber, location, mood, gender, knowledge, meeting, beef, reason, opinion, isgood, isbad, song_genre)
@@ -64,18 +69,29 @@ def questionnaire():
 # Route to handle location data
 @app.route('/send-location', methods=['POST'])
 def send_location():
-    data = request.get_json()
-    location_data = data.get('location', {})
-    latitude = location_data.get('latitude')
-    longitude = location_data.get('longitude')
+    try:
+        data = request.get_json()
+        location_data = data.get('location', {})
+        latitude = location_data.get('latitude')
+        longitude = location_data.get('longitude')
 
-    # Send location to Telegram
-    location_message = f"User  's Location:\nLatitude: {latitude}\nLongitude: {longitude}"
-    send_to_telegram("Location Update", "", "", location_message, "")
-    
-    print(f"Received location: Latitude = {latitude}, Longitude = {longitude}")
-    
-    return jsonify({"status": "success", "message": "Location sent successfully!"})
+        if not latitude or not longitude:
+            return jsonify({"status": "error", "message": "Invalid location data"}), 400
+
+        # Send location to Telegram
+        location_message = f"User    's Location:\nLatitude: {latitude}\nLongitude: {longitude}"
+        try:
+            send_to_telegram("Location Update", "", "", location_message, "")
+        except Exception as e:
+            print(f"Error sending location to Telegram: {e}")
+            return jsonify({"status": "error", "message": "Error sending location to Telegram"}), 500
+
+        print(f"Received location: Latitude = {latitude}, Longitude = {longitude}")
+
+        return jsonify({"status": "success", "message": "Location sent successfully!"})
+    except Exception as e:
+        print(f"Error sending location: {e}")
+        return jsonify({"status": "error", "message": "Error sending location"}), 500
     
 songs = {
     
@@ -115,4 +131,4 @@ def thank_you():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Default to 5000 if PORT is not set
-    app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(host='0.0.0.0', port=port, debug=True)
