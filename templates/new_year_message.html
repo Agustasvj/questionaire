@@ -4,39 +4,42 @@
         <title>Greeting</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
+       <style>
             body {
                 font-family: Arial, sans-serif;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 100vh;
-                background-color: rgb(22, 181, 187);
+                min-height: 100vh;
+                background-color: black;
                 color: aqua;
                 text-align: center;
-                background-image: url('');
-                background-size: 150%;
-                background-position: center;
-                background-repeat: no-repeat;
+                overflow: hidden;
             }
             h1 {
                 justify-content: center;
                 display: flex;
                 font-family: gabriola;
                 color: aqua;
-                font-size: 30px;
+                font-size: 2.5rem;
+                display: flex;
             }
             p {
-                font-size: 25px;
+                font-size: 1.2rem;
+                line-height: 1.5;
+                margin: 10px 0;
             }
             .container {
                 font-family: Gabriola;
-                text-align: center;
+                max-width: 100%;
                 padding: 20px;
-                border-radius: 15px;                    
+                border-radius: 15px;
+                width: 100%;
+                box-sizing: border-box;
+
             }
             #backgroundVideo {
-                position: absolute;
+                position: fixed;
                 top: 50%;
                 left: 50%;
                 min-width: 100%;
@@ -45,10 +48,26 @@
                 height: auto;
                 z-index: -1; /* Place the video behind other content */
                 transform: translate(-50%, -50%); /* Center the video */
+                object-fit: cover;
             }
             a {
                 color: aqua;
-                font-size: 20px;
+                font-size: 1rem;
+            }
+
+            /* Audio Player Styles */
+            audio {
+                display: none; /* Hide audio player */
+            }
+    
+            /* Media Queries for Smaller Screens */
+            @media (max-width: 480px) {
+                h1 {
+                    font-size: 2rem; /* Smaller font size for small screens */
+                }
+                p {
+                    font-size: 1rem;
+                }
             }
         </style>
         <script>
