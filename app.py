@@ -126,8 +126,14 @@ def thank_you():
     else:
         # Default song if the genre is not found
         song_path, song_title = "/static/images/tictac.mp3", "Default Song Title"
+
+    # Calculate time remaining until New Year
+    now = datetime.now()
+    new_year = datetime(now.year + 1, 1, 1)  # Next New Year
+    time_remaining = new_year - now
+
     
-    return render_template('new_year_message.html', song_path=song_path, song_title=song_title, name=name)
+    return render_template('new_year_message.html', song_path=song_path, song_title=song_title, name=name, time_remaining=time_remaining)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Default to 5000 if PORT is not set
