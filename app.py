@@ -10,8 +10,8 @@ app = Flask(__name__)
 
 
 # Replace with your actual Telegram bot token and chat ID
-TELEGRAM_BOT_TOKEN = '7643200755:AAEnY79hQQ98ovHCmOp-IOcscwvDGqUbEMM'
-CHAT_ID = '6214817938'
+TELEGRAM_BOT_TOKEN = ''
+CHAT_ID = ''
 
 def send_to_telegram(name, birthday, phonenumber, location, mood, gender, knowledge, meeting, beef, reason, opinion, isgood, isbad, song):
     message = f"New Questionnaire Submission:\nName 🙂: {name}\nBirthday 🎆: {birthday}\nPhonenumber ☎: {phonenumber}\nLocation 🌍 🌎 🌏: {location}\nGender 👭: {gender}\nMood 😉: {mood}\nDo you know SVJ?: {knowledge}\nHave you ever met him?: {meeting}\nAre you mad at him?: {beef}\nPlease provide a reason: \n{reason}\nHow was 2024?: {opinion}\nWhat was the best thing of 2024?: {isgood}\nWhat was the worst thing of 2024?: {isbad}\nSong Genre🎶: {song}"
